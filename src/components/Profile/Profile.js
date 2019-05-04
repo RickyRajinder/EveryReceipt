@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import UserInfo from "./UserInfo";
 import CommonButton from "../Common/CommonButton";
 import { styles } from "../Common/styles";
+import NavBar from "../Common/NavBar/NavBar";
 
 class Profile extends React.Component {
   constructor(props) {
@@ -20,10 +21,7 @@ class Profile extends React.Component {
     return (
       <View style={styles.container}>
         <UserInfo profile={profile} />
-        <CommonButton
-          title="Home" 
-          onPress={this.goToHome.bind(this)} 
-        />
+        <NavBar/>
       </View>
     );
   }

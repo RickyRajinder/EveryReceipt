@@ -9,6 +9,7 @@ import CommonButton from "../Common/CommonButton";
 import ExpenseList from "../Common/ExpenseList";
 import { searchExpenses, deleteExpense } from "../../actions/expenseActions";
 import { connect } from "react-redux";
+import NavBar from "../Common/NavBar/NavBar";
 
 class SearchScreen extends React.Component {
   constructor(props) {
@@ -80,6 +81,7 @@ class SearchScreen extends React.Component {
         <SearchBar 
           handleSearch={this.handleSearch.bind(this)} />
         {this.renderExpenseList()}
+        <NavBar/>
       </View>
     );
   }

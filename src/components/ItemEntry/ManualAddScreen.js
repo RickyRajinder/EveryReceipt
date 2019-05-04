@@ -4,6 +4,7 @@ import FormFields from "./../Common/FormFields";
 import { styles } from "../Common/styles";
 import { addExpense } from "../../actions/expenseActions";
 import { connect } from "react-redux";
+import NavBar from "../Common/NavBar/NavBar";
 
 class ManualAddScreen extends Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class ManualAddScreen extends Component {
       <Button title="back" onPress={this.handleGoBack.bind(this)}>
       </Button>
       <FormFields submit={this.addExpense.bind(this)}/>
+      <NavBar/>
     </View>;
   }
 }
@@ -39,9 +41,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(null, mapDispatchToProps)(ManualAddScreen);
-
-
-
 
 
 
