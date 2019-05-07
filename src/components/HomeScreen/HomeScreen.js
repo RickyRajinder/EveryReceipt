@@ -11,7 +11,7 @@ import { signOut } from "../../actions/authActions";
 import { ImagePicker, Permissions, Constants } from "expo";
 
 
-class HomeScreen extends React.Component {
+export class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
