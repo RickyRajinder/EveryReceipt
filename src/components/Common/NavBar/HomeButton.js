@@ -1,11 +1,15 @@
 import React from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import {StyleSheet, View} from "react-native";
-import {HomeScreen} from "../../HomeScreen/HomeScreen";
 
 export default class HomeButton extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      buttons: [
+        {title: "HomeScreen", onPress: this.handlePress.bind(this)}
+      ]
+    };
   }
   handlePress () {
     this.props.navigation.navigate("HomeScreen");
@@ -27,3 +31,4 @@ const styles = StyleSheet.create({
     left: 5,
   }
 });
+

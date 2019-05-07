@@ -26,10 +26,10 @@ class ManualAddScreen extends Component {
 
   render() {
     return <View style={styles.manualadd}>
+      <NavBar/>
       <Button title="back" onPress={this.handleGoBack.bind(this)}>
       </Button>
       <FormFields submit={this.addExpense.bind(this)}/>
-      <NavBar/>
     </View>;
   }
 }

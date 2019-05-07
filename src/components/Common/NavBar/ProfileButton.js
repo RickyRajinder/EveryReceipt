@@ -3,8 +3,15 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import {StyleSheet, View} from "react-native";
 
 export default class ProfileButton extends React.Component {
-
-  handlePress() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      buttons: [
+        {title: "Profile", onPress: this.handlePress.bind(this)}
+      ]
+    };
+  }
+  handlePress () {
     this.props.navigation.navigate("Profile");
   }
 
