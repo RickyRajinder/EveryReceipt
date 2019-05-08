@@ -9,6 +9,7 @@ import { getExpenses, addExpense, deleteExpense } from "../../actions/expenseAct
 import { connect } from "react-redux";
 import { signOut } from "../../actions/authActions";
 import { ImagePicker, Permissions, Constants } from "expo";
+import HomeButton from "../Common/NavBar/HomeButton";
 
 
 export class HomeScreen extends React.Component {
@@ -29,7 +30,6 @@ export class HomeScreen extends React.Component {
     });
     this.props.getExpenses();
   }
-
 
   handleDelete(id) {
     this.props.deleteExpense(id);

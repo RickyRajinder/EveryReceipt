@@ -4,6 +4,7 @@ import ItemEdit from "../components/ItemEdit/ItemEdit";
 import HomeScreen from "../components/HomeScreen/HomeScreen";
 import ManualAddScreen from "../components/ItemEntry/ManualAddScreen";
 import Profile from "../components/Profile/Profile";
+import NavBar from "../components/Common/NavBar/NavBar";
 
 /**
  * Create navigator for the home screen, which contains navigations to
