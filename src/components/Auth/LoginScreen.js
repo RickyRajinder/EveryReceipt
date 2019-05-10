@@ -21,9 +21,10 @@ class LoginScreen extends React.Component {
       email: "",
       password: "",
       buttons: [
-        {text: "Login", onPress: this.login.bind(this)},
-        {text: "Sign Up", onPress: this.toggleSignUp.bind(this)}
-      ]
+        {text: "Login" },
+        {text: "Sign Up" }
+      ],
+      clicked: false
     };
   }
 
@@ -42,14 +43,39 @@ class LoginScreen extends React.Component {
     this.props.navigation.navigate("SignUpScreen");
   }
 
+  // Listens for changes on input fields
   handleChange(id, value) {
     this.setState({
-      [id]: value
+      [id]: value,
+      clicked: false
     });
   }
 
-  render() {
+  isClicked = (any) => {
+    if(any === "Login") {
+      this.setState({clicked: true});
+      this.login();
+    }
+    if(any === "Sign Up") this.toggleSignUp();
+  }
+
+  renderErrorMsg() {
     const { authError } = this.props;
+    const { clicked } = this.state;
+    if(clicked && this.state.email === "") {
+      return "Enter an Email.";
+    } else if (clicked && this.state.email !== "" 
+    && this.state.password === "") {
+      return "Enter a password.";
+    } else if (authError && this.state.email !== ""
+    && this.state.password !== "") {
+      return "Login failed.";
+    } else {
+      return "";
+    }
+  }
+
+  render() {
     return (
       <ImageBackground source={bgImage} style={styles.container}>
         <View style={styles.logoContainer}>
@@ -60,15 +86,13 @@ class LoginScreen extends React.Component {
           return (
             <CommonButton 
               key={btn.text}
-              onPress={btn.onPress} 
+              onPress={() => this.isClicked(btn.text)} 
               text={btn.text}
             />
           );
         })}
         <Text style={{ color: "red" }}>
-          {authError ? "Login Failed." : ""}
-          {this.state.email}
-          {this.state.password}
+          {this.renderErrorMsg()}
         </Text>
       </ImageBackground>
     );

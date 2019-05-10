@@ -2,10 +2,9 @@ import { StyleSheet, Dimensions } from "react-native";
 
 export const styles = StyleSheet.create({
   backButton: {
-    ...StyleSheet.absoluteFillObject,
-    alignSelf: "flex-end",
-    marginTop: -5,
-    position: "absolute", // add if dont work with above
+    alignItems: "center",
+    backgroundColor: "#DDDDDD",
+    padding: 10,
   },
   btnEye: {
     position: "absolute",
@@ -30,6 +29,16 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
   },
+  cancelButton: {
+    position: "absolute",
+    left: 70,
+    bottom: 70
+  },
+  confirmButton: {
+    position: "absolute",
+    right: 70,
+    bottom: 70
+  },
   col: {
     marginTop: 10,
     minWidth: "20%",
@@ -53,7 +62,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingTop: 100,
-    paddingBottom: 50,
+    paddingBottom: 100,
   },
   dropdown: {
     width: Dimensions.get("window").width - 125,
@@ -61,7 +70,7 @@ export const styles = StyleSheet.create({
   },
   deleteBtn: {
     position: "absolute",
-    right: 0,
+    right: 65,
   },
   expenseItem: {
     position: "relative",
@@ -72,7 +81,8 @@ export const styles = StyleSheet.create({
   expensePadding: {
     paddingLeft: 20,
     paddingRight: 20,
-    paddingBottom: 50
+    paddingBottom: 20,
+    width: Dimensions.get("window").width - 65
   },
   logoContainer: {
     alignItems: "center",
@@ -80,10 +90,11 @@ export const styles = StyleSheet.create({
   },
   logoText: {
     color: "black",
-    fontSize: 20,
+    fontSize: 35,
     fontWeight: "500",
     marginTop: 10,
-    opacity: 0.5
+    opacity: 0.5,
+    marginLeft: 30
   },
   input: {
     width: Dimensions.get("window").width - 85,
@@ -126,11 +137,6 @@ export const styles = StyleSheet.create({
     minHeight: "10%",
     flexDirection: "row",
   },
-  text: {
-    color: "rgba(255,255,255,0.7)",
-    fontSize: 16,
-    textAlign: "center"
-  },
   search: {
     width: Dimensions.get("window").width - 135,
     height: 45,
@@ -139,6 +145,15 @@ export const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,0.35)",
     color: "rgba(255,255,255,0.7)",
     marginHorizontal: 25
+  },
+  scrollView: {
+    marginRight: 100,
+    marginLeft: 20
+  },
+  text: {
+    color: "rgba(255,255,255,0.7)",
+    fontSize: 16,
+    textAlign: "center"
   },
 });
 

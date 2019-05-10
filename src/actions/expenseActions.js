@@ -1,5 +1,21 @@
 //Import constant action types
-import { GET_EXPENSES, ADD_EXPENSE, DELETE_EXPENSE, EXPENSES_LOADING, EDIT_EXPENSE, SEARCH_EXPENSES } from "./types";
+import { 
+  GET_EXPENSES, 
+  ADD_EXPENSE, 
+  DELETE_EXPENSE, 
+  EXPENSES_LOADING, 
+  EDIT_EXPENSE, 
+  SEARCH_EXPENSES,
+  GET_TOTAL_PRICE
+} from "./types";
+
+sorter = (arr) => {
+  return arr.sort(
+    (a,b) => 
+      (parseInt(a.timestamp) > parseInt(b.timestamp)) ? -1 : 
+        ((parseInt(b.timestamp) > parseInt(a.timestamp)) ? 1 
+          : 0)); 
+};
 
 export const setItemsLoading = () => {
   return {
@@ -34,14 +50,13 @@ export const getExpenses = () => {
             id: doc.id,
             store: curr.store,
             items: curr.items,
+            timestamp: curr.timestamp,
             total: curr.total
           };
-          // console.log(doc.data().expense.name);
-          // console.log(doc.data().id, " -> ", doc.data().name);
-          
           expenses.push(currObj);
         });
       }).then(() => {
+        expenses = sorter(expenses);
         dispatch( { type: GET_EXPENSES, payload: expenses } );
       });
   };
@@ -104,7 +119,7 @@ export const searchExpenses = (queryType, query) => {
           };
 
           if(queryType === "store") {
-            if(currObj.store === query) {
+            if(currObj.store.toLowerCase() === query.toLowerCase()) {
               searchResults.push(currObj);
             }
           } else if (queryType === "price-greater-than") {
@@ -119,6 +134,26 @@ export const searchExpenses = (queryType, query) => {
         });
       }).then(() => {
         dispatch( { type: SEARCH_EXPENSES, payload: searchResults } );
+      });
+  };
+};
+
+
+export const getTotalPrice = () => {
+  let total = 0;
+  return (dispatch, getState, {getFirebase, getFirestore}) => {
+    const firestore = getFirestore();
+    const authorId = getState().firebase.auth.uid;
+    
+    firestore.collection("users").doc(authorId).collection("expenses")
+      .get()
+      .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+          let curr = doc.data().expense;
+          total += parseFloat(curr.total);
+        });
+      }).then(() => {
+        dispatch( { type: GET_TOTAL_PRICE, payload: total.toFixed(2) } );
       });
   };
 };
