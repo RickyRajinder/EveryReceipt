@@ -45,6 +45,15 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 50,
   },
+  homeContainer: {
+    flex: 1,
+    width: null,
+    height: null,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingTop: 50,
+    backgroundColor: "#D3D3D3"
+  },
   manualadd: {
     flex: 1,
     width: null,
@@ -55,8 +64,8 @@ export const styles = StyleSheet.create({
     paddingBottom: 100,
   },
   errorText: {
-    color: "red", 
-    backgroundColor: "white", 
+    color: "red",
+    backgroundColor: "white",
     fontSize: 20
   },
   dropdown: {
@@ -67,17 +76,12 @@ export const styles = StyleSheet.create({
     position: "absolute",
     right: 65,
   },
-  expenseItem: {
-    position: "relative",
-    width: Dimensions.get("window").width - 85,
-    height: 45,
-    marginHorizontal: 25
-  },
   expensePadding: {
     paddingLeft: 20,
     paddingRight: 20,
     paddingBottom: 20,
-    width: Dimensions.get("window").width - 65
+    width: Dimensions.get("window").width - 65,
+    backgroundColor: "white",
   },
   logoContainer: {
     alignItems: "center",
@@ -109,11 +113,11 @@ export const styles = StyleSheet.create({
     marginTop: 10
   },
   itemText: {
-    color: "black", 
+    color: "black",
     fontSize: 30
   },
   itemSubText: {
-    color: "black", 
+    color: "black",
     fontSize: 20
   },
   profileName: {

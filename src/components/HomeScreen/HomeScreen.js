@@ -135,8 +135,8 @@ class HomeScreen extends React.Component {
     const { expenses } = this.props;
     return (
       <React.Fragment>
-        <AddButton handlePress={this.handlePress.bind(this)} />
-        <View style={styles.container}>
+        <View style={styles.homeContainer}>
+          <AddButton handlePress={this.handlePress.bind(this)} />
           <ScrollView style={styles.scrollView}>
             {this.renderExpenseList()}
           </ScrollView>
